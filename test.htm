@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUTHOR:CUMIN</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      background: pink;
+      position: absolute;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      const box = document.querySelector('.box')
+      const mousedown = (event) => {
+        let innerX = event.clientX - box.offsetLeft
+        let innerY = event.clientY - box.offsetTop
+
+        box.style.borderWidth = "1px";
+        box.style.borderStyle = "solid";
+        box.style.borderColor = "black";
+        // 移动时
+        document.onmousemove = function (event) {
+          box.style.left = event.clientX - innerX + "px"
+          box.style.top = event.clientY - innerY + "px"
+        }
+
+        // 抬起时
+        document.onmouseup = function () {
+          document.onmousemove = null
+          document.mousedown = null
+          control()
+          box.style.borderWidth = "";
+          box.style.borderStyle = "";
+          box.style.borderColor = "";
+        }
+      }
+
+      // 超出边界处理
+      const control = function () {
+        if (box.offsetLeft < 0) {
+          box.style.left = 0 + "px"
+        }
+
+        if (box.offsetTop < 0) {
+          box.style.top = 0 + "px"
+        }
+
+        if ((box.offsetLeft + parseInt(box.style.width)) > window.innerWidth) {
+          box.style.left = (window.innerWidth - parseInt(box.style.width)) + "px"
+        }
+
+        if ((box.offsetTop + parseInt(box.style.height)) > window.innerHeight) {
+          box.style.top = (window.innerHeight - parseInt(box.style.height)) + "px"
+        }
+
+      }
+
+      // 按下时
+      box.addEventListener('mousedown', mousedown, false)
+
+    }
+  </script>
+</head>
+
+<body>
+  <div class="box" style="left: 100px; top: 100px; width: 100px; height: 100px;"></div>
+</body>
+
+</html>

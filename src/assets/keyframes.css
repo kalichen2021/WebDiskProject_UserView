@@ -1,0 +1,43 @@
+/* 
+
+*_FTB：front to back
+*_BTF：back to front
+
+*/
+@keyframes cutBrand_FTB {
+  0% {
+    translate: 20px 30px 60px;
+  }
+
+  25% {
+    translate: -180px 30px 60px;
+  }
+
+  50% {
+    translate: -180px -30px -60px;
+  }
+
+  100% {
+    translate: -20px -30px -60px;
+  }
+}
+
+@keyframes cutBrand_BTF {
+  0% {
+    translate: -20px -30px -60px
+  }
+
+  25% {
+    translate: 180px -30px -60px;
+
+  }
+
+  50% {
+    translate: 180px 30px 60px;
+  }
+
+  100% {
+    translate: 20px 30px 60px;
+    ;
+  }
+}
